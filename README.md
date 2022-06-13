@@ -1,2 +1,5 @@
 # Packer
-Ubuntu Template with Packer - Proxmox
+
+Criando um template do Ubuntu 22.04 com packer no Proxmox 7.2
+
+

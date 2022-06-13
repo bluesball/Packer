@@ -1,0 +1,50 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: br
+  apt:
+    preserve_sources_list: false
+    primary:
+      - arches: [amd64]
+        uri: "http://archive.ubuntu.com/ubuntu/"
+  ssh:
+    install-server: true
+    allow-pw: true
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
+  packages:
+    - qemu-guest-agent
+    - sudo
+  user-data:
+    package_update: false
+    package_upgrade: false
+    timezone: America/Sao_Paulo
+    users:
+      - name: ubuntu
+        groups: [adm, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        ssh_authorized_keys:
+           - cole o valor da chave publica aqui
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  network:
+    version: 2
+    ethernets:
+      ens18:
+        dhcp4: no
+        addresses:
+        - 192.168.1.1/24
+        routes:
+        - to: default
+          via: colocar o gateway
+        nameservers:
+          addresses:
+          - 8.8.8.8
+          - 1.1.1.1
