@@ -6,7 +6,7 @@ variable "proxmox_api_url" {
 variable "proxmox_api_token_id" {
   type        = string
   description = "Proxmox Token ID"
-  default     = "root@pam!automate" 
+  default     = "root@pam!seuid" 
 }
 #variable "px_pass" {
 #  type        = string
